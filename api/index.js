@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRoutes from "./routes/user.route.js";
 import authRoutes from "./routes/auth.route.js";
+import cookieParser from "cookie-parser";
 dotenv.config();
 mongoose
   .connect(process.env.MONGO_DBURI)
@@ -13,6 +14,7 @@ mongoose
     console.log("error connecting to MongoDB" + err.message);
   });
 const app = express();
+app.use(cookieParser());
 app.use(express.json());
 
 app.listen(3000, () => {
