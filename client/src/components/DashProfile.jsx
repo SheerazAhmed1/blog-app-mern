@@ -28,6 +28,7 @@ const DashProfile = () => {
   const dispatch = useDispatch();
   const [updateUserError, setUpdateUserError] = useState(null);
   const [updateUserSuccess, setUpdateUserSuccess] = useState(null);
+  const [showModAL, setShowModal] = useState(false);
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -184,7 +185,14 @@ const DashProfile = () => {
         </Button>
       </form>
       <div className="text-red-500 flex justify-between mt-5">
-        <span className="cursor-pointer">Delete Account</span>
+        <span
+          onClick={() => {
+            setShowModal(true);
+          }}
+          className="cursor-pointer"
+        >
+          Delete Account
+        </span>
         <span className="cursor-pointer">Sign Out</span>
       </div>
       {updateUserSuccess && (
